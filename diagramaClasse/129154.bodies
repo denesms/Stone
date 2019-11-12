@@ -1,0 +1,75 @@
+class Turma
+!!!147458.php!!!	Turma(in idturma : , in datainicio : , in datafinal : , in idcurso : , in nomecurso : , in idprofessor1 : , in nomeprofessor1 : , in idprofessor2 : , in nomeprofessor2 : , in descricao : )
+
+      
+      $this->idturma = $idturma;
+      $this->datainicio = $datainicio;
+      $this->datafinal = $datafinal;
+      $this->idcurso = $idcurso;
+      $this->idprofessor1 = $idprofessor1;
+      $this->idprofessor2 = $idprofessor2;
+      $this->nomecurso = $nomecurso;
+      $this->nomeprofessor1 = $nomeprofessor1;
+      $this->nomeprofessor2 = $nomeprofessor2;
+      $this->Tdescricao = $descricao;
+         
+!!!147586.php!!!	getTdescricao()
+
+        return $this->Tdescricao;
+!!!147714.php!!!	setTdescricao(in Tdescricao : )
+
+        $this->Tdescricao = $Tdescricao;
+!!!147842.php!!!	getIdturma()
+
+      return $this->idturma;
+!!!147970.php!!!	getDatainicio()
+
+      return $this->datainicio;
+!!!148098.php!!!	getDatafinal()
+
+      return $this->datafinal;
+!!!148226.php!!!	getIdcurso()
+
+      return $this->idcurso;
+!!!148354.php!!!	getIdprofessor1()
+
+      return $this->idprofessor1;
+!!!148482.php!!!	getIdprofessor2()
+
+      return $this->idprofessor2;
+!!!148610.php!!!	getNomecurso()
+
+      return $this->nomecurso;
+!!!148738.php!!!	getNomeprofessor1()
+
+      return $this->nomeprofessor1;
+!!!148866.php!!!	getNomeprofessor2()
+
+      return $this->nomeprofessor2;
+!!!148994.php!!!	setIdturma(in idturma : )
+
+      $this->idturma = $idturma;
+!!!149122.php!!!	setDatainicio(in datainicio : )
+
+      $this->datainicio = $datainicio;
+!!!149250.php!!!	setDatafinal(in datafinal : )
+
+      $this->datafinal = $datafinal;
+!!!149378.php!!!	setIdcurso(in idcurso : )
+
+      $this->idcurso = $idcurso;
+!!!149506.php!!!	setIdprofessor1(in idprofessor1 : )
+
+      $this->idprofessor1 = $idprofessor1;
+!!!149634.php!!!	setIdprofessor2(in idprofessor2 : )
+
+      $this->idprofessor2 = $idprofessor2;
+!!!149762.php!!!	setNomecurso(in nomecurso : )
+
+      $this->nomecurso = $nomecurso;
+!!!149890.php!!!	setNomeprofessor1(in nomeprofessor1 : )
+
+      $this->nomeprofessor1 = $nomeprofessor1;
+!!!150018.php!!!	setNomeprofessor2(in nomeprofessor2 : )
+
+      $this->nomeprofessor2 = $nomeprofessor2;

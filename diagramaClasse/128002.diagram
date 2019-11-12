@@ -1,0 +1,31 @@
+format 222
+
+classcanvas 128002 class_ref 128130 // Conteudo
+  classdiagramsettings member_max_width 0 end
+  xyz 65.2374 212.045 2000
+end
+classcanvas 128130 class_ref 128258 // ConteudoDAO
+  classdiagramsettings member_max_width 0 end
+  xyz 193.332 177.618 2000
+end
+classcanvas 128258 class_ref 128386 // Curso
+  classdiagramsettings member_max_width 0 end
+  xyz 185.76 473.616 2000
+end
+classcanvas 128386 class_ref 128514 // cursoDAO
+  classdiagramsettings member_max_width 0 end
+  xyz 357.378 178.903 2000
+end
+classcanvas 128514 class_ref 128642 // Matricula
+  classdiagramsettings member_max_width 0 end
+  xyz 526 262 2005
+end
+classcanvas 128642 class_ref 128770 // MatriculaDAO
+  classdiagramsettings member_max_width 0 end
+  xyz 664 387 2000
+end
+classcanvas 128770 class_ref 129154 // Turma
+  classdiagramsettings member_max_width 0 end
+  xyz 723 237 2005
+end
+end

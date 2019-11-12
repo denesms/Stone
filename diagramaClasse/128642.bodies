@@ -1,0 +1,66 @@
+class Matricula
+!!!139010.php!!!	__construct(in idmatricula : , in notas : , in ultimoslide : , in ultimocapitulo : , in ultimasecao : , in idturma : , in idaluno : , in nomeAluno : , in nomecurso : )
+
+        $this->idmatricula = $idmatricula;
+        $this->notas = $notas;
+        $this->ultimoslide = $ultimoslide;
+        $this->ultimocapitulo = $ultimocapitulo;
+        $this->ultimasecao = $ultimasecao;
+        $this->idturma = $idturma;
+        $this->idaluno = $idaluno;
+        $this->nomeAluno = $nomeAluno;
+        $this->nomecurso = $nomecurso;
+!!!139138.php!!!	getIdmatricula()
+
+        return $this->idmatricula;
+!!!139266.php!!!	getNotas()
+
+        return $this->notas;
+!!!139394.php!!!	getUltimoslide()
+
+        return $this->ultimoslide;
+!!!139522.php!!!	getUltimocapitulo()
+
+        return $this->ultimocapitulo;
+!!!139650.php!!!	getUltimasecao()
+
+        return $this->ultimasecao;
+!!!139778.php!!!	getIdturma()
+
+        return $this->idturma;
+!!!139906.php!!!	getIdaluno()
+
+        return $this->idaluno;
+!!!140034.php!!!	getNomeAluno()
+
+        return $this->nomeAluno;
+!!!140162.php!!!	getNomecurso()
+
+        return $this->nomecurso;
+!!!140290.php!!!	setIdmatricula(in idmatricula : )
+
+        $this->idmatricula = $idmatricula;
+!!!140418.php!!!	setNotas(in notas : )
+
+        $this->notas = $notas;
+!!!140546.php!!!	setUltimoslide(in ultimoslide : )
+
+        $this->ultimoslide = $ultimoslide;
+!!!140674.php!!!	setUltimocapitulo(in ultimocapitulo : )
+
+        $this->ultimocapitulo = $ultimocapitulo;
+!!!140802.php!!!	setUltimasecao(in ultimasecao : )
+
+        $this->ultimasecao = $ultimasecao;
+!!!140930.php!!!	setIdturma(in idturma : )
+
+        $this->idturma = $idturma;
+!!!141058.php!!!	setIdaluno(in idaluno : )
+
+        $this->idaluno = $idaluno;
+!!!141186.php!!!	setNomeAluno(in nomeAluno : )
+
+        $this->nomeAluno = $nomeAluno;
+!!!141314.php!!!	setNomecurso(in nomecurso : )
+
+        $this->nomecurso = $nomecurso;

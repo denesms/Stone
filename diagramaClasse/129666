@@ -1,0 +1,91 @@
+format 222
+"Control" // Stone::Control
+  revision 1
+  modified_by 2 "denes"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  php_dir "/home/denes/NetBeansProjects/Stone/Control/"
+  deploymentview 128898 "Control"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128898 "connection"
+      stereotype "source"
+      php_src "<?php
+ 
+Class Connection {
+ 
+private  $server = \"pgsql:host=localhost dbname=dbPCO\";
+ 
+private  $user = \"postgres\";
+ 
+private  $pass = \"123\";
+ 
+private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
+ 
+protected $con;
+ 
+          	public function openConnection()
+ 
+           	{
+ 
+               try
+ 
+                 {
+ 
+	        $this->con = new PDO($this->server, $this->user,$this->pass,$this->options);
+ 
+	        return $this->con;
+ 
+                  }
+ 
+               catch (PDOException $e)
+ 
+                 {
+ 
+                     echo \"ERRO NA CONEXÃO\" . $e->getMessage();
+ 
+                 }
+ 
+           	}
+ 
+public function closeConnection() {
+ 
+   	$this->con = null;
+ 
+	}
+ 
+}
+ 
+?>"
+      associated_elems
+      end
+    end
+  end
+end

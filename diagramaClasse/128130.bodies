@@ -1,0 +1,74 @@
+class Conteudo
+!!!131202.php!!!	Conteudo(in idconteudo : , in ordem : , in texto : , in imagem : , in video : , in idcurso : , in capitulo : , in secao : , in nomecurso : , in titulo : )
+
+
+        $this->idconteudo = $idconteudo;
+        $this->ordem = $ordem;
+        $this->texto = $texto;
+        $this->imagem = $imagem;
+        $this->video = $video;
+        $this->idcurso = $idcurso;
+        $this->capitulo = $capitulo;
+        $this->secao = $secao;
+        $this->nomecurso = $nomecurso;
+        $this->titulo = $titulo;
+!!!131330.php!!!	getIdconteudo()
+
+        return $this->idconteudo;
+!!!131458.php!!!	getOrdem()
+
+        return $this->ordem;
+!!!131586.php!!!	getTexto()
+
+        return $this->texto;
+!!!131714.php!!!	getImagem()
+
+        return $this->imagem;
+!!!131842.php!!!	getVideo()
+
+        return $this->video;
+!!!131970.php!!!	getIdcurso()
+
+        return $this->idcurso;
+!!!132098.php!!!	getCapitulo()
+
+        return $this->capitulo;
+!!!132226.php!!!	getSecao()
+
+        return $this->secao;
+!!!132354.php!!!	getNomecurso()
+
+        return $this->nomecurso;
+!!!132482.php!!!	getTitulo()
+
+        return $this->titulo;
+!!!132610.php!!!	setTitulo(in titulo : )
+
+        $this->titulo = $titulo;
+!!!132738.php!!!	setIdconteudo(in idconteudo : )
+
+        $this->idconteudo = $idconteudo;
+!!!132866.php!!!	setOrdem(in ordem : )
+
+        $this->ordem = $ordem;
+!!!132994.php!!!	setTexto(in texto : )
+
+        $this->texto = $texto;
+!!!133122.php!!!	setImagem(in imagem : )
+
+        $this->imagem = $imagem;
+!!!133250.php!!!	setVideo(in video : )
+
+        $this->video = $video;
+!!!133378.php!!!	setIdcurso(in idcurso : )
+
+        $this->idcurso = $idcurso;
+!!!133506.php!!!	setCapitulo(in capitulo : )
+
+        $this->capitulo = $capitulo;
+!!!133634.php!!!	setSecao(in secao : )
+
+        $this->secao = $secao;
+!!!133762.php!!!	set(in nomecurso : )
+
+        $this->nomecurso = $nomecurso;

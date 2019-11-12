@@ -1,0 +1,7 @@
+SELECT turma.idcurso,turma.idprofessor1, turma.idprofessor2, turma.idturma, turma.datainicio, turma.datafinal,turma.descricao, 
+       curso.nomecurso, usuario1.nome as professor1, usuario2.nome as professor2
+    FROM turma,usuario as usuario1, usuario as usuario2,curso 
+    where curso.idcurso = 21 and turma.idcurso = 21 and usuario1.idusuario = turma.idprofessor1 and usuario2.idusuario = turma.idprofessor2 order by nomecurso
+
+
+conteudo colocar o nome do Curso

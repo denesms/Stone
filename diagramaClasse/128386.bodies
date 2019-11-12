@@ -1,0 +1,44 @@
+class Curso
+!!!135554.php!!!	Curso(in id : , in nome : , in descricao : , in cargaHoraria : )
+
+        $this->id = $id;
+        $this->nome = $nome;
+        $this->descricao = $descricao;
+        $this->cargaHoraria = $cargaHoraria;
+!!!135682.php!!!	Curso2(in id : , in nome : , in descricao : , in cargaHoraria : , in turma : )
+
+        $this->id = $id;
+        $this->nome = $nome;
+        $this->descricao = $descricao;
+        $this->cargaHoraria = $cargaHoraria;
+        $this->cargaHoraria = $turma;
+!!!135810.php!!!	getId()
+
+        return $this->id;
+!!!135938.php!!!	getNome()
+
+        return $this->nome;
+!!!136066.php!!!	getDescricao()
+
+        return $this->descricao;
+!!!136194.php!!!	getCargaHoraria()
+
+        return $this->cargaHoraria;
+!!!136322.php!!!	getTurma()
+
+        return $this->turma;
+!!!136450.php!!!	setId(in id : )
+
+        $this->id = $id;
+!!!136578.php!!!	setNome(in nome : )
+
+        $this->nome = $nome;
+!!!136706.php!!!	setDescricao(in descricao : )
+
+        $this->descricao = $descricao;
+!!!136834.php!!!	setCargaHoraria(in cargaHoraria : )
+
+        $this->cargaHoraria = $cargaHoraria;
+!!!136962.php!!!	setTurma(in turma : )
+
+        $this->turma = $turma;

@@ -1,0 +1,57 @@
+class questoes
+!!!143106.php!!!	__construct(in idq : , in pergunta : , in ra : , in rb : , in rc : , in rd : , in va : , in vb : , in vc : , in vd : , in idcurso : )
+        $this->idq = $idq;
+        $this->pergunta = $pergunta;
+        $this->ra = $ra;
+        $this->rb = $rb;
+        $this->rc = $rc;
+        $this->rd = $rd;
+        $this->va = $va;
+        $this->vb = $vb;
+        $this->vc = $vc;
+        $this->vd = $vd;
+        $this->idcurso = $idcurso;
+!!!143234.php!!!	getIdq()
+        return $this->idq;
+!!!143362.php!!!	getPergunta()
+        return $this->pergunta;
+!!!143490.php!!!	getRa()
+        return $this->ra;
+!!!143618.php!!!	getRb()
+        return $this->rb;
+!!!143746.php!!!	getRc()
+        return $this->rc;
+!!!143874.php!!!	getRd()
+        return $this->rd;
+!!!144002.php!!!	getVa()
+        return $this->va;
+!!!144130.php!!!	getVb()
+        return $this->vb;
+!!!144258.php!!!	getVc()
+        return $this->vc;
+!!!144386.php!!!	getVd()
+        return $this->vd;
+!!!144514.php!!!	getIdcurso()
+        return $this->idcurso;
+!!!144642.php!!!	setIdq(in idq : )
+        $this->idq = $idq;
+!!!144770.php!!!	setPergunta(in pergunta : )
+        $this->pergunta = $pergunta;
+!!!144898.php!!!	setRa(in ra : )
+        $this->ra = $ra;
+!!!145026.php!!!	setRb(in rb : )
+        $this->rb = $rb;
+!!!145154.php!!!	setRc(in rc : )
+        $this->rc = $rc;
+!!!145282.php!!!	setRd(in rd : )
+        $this->rd = $rd;
+!!!145410.php!!!	setVa(in va : )
+        $this->va = $va;
+!!!145538.php!!!	setVb(in vb : )
+        $this->vb = $vb;
+!!!145666.php!!!	setVc(in vc : )
+        $this->vc = $vc;
+!!!145794.php!!!	setVd(in vd : )
+        $this->vd = $vd;
+!!!145922.php!!!	setIdcurso(in idcurso : )
+        $this->idcurso = $idcurso;

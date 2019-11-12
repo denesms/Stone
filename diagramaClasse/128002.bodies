@@ -1,0 +1,163 @@
+class MockServer
+!!!128002.php!!!	contentType(in req : )
+		$type = $req->query['contentType'];
+		header("Content-type: $type");
+		echo $req->query['response'];
+!!!128130.php!!!	wait(in req : )
+		$wait = (int) $req->query['wait'];
+		sleep( $wait );
+		if ( isset( $req->query['script'] ) ) {
+			header( 'Content-type: text/javascript' );
+		} else {
+			header( 'Content-type: text/html' );
+			echo 'ERROR <script>ok( true, "mock executed" );</script>';
+		}
+!!!128258.php!!!	name(in req : )
+		if ( $req->query['name'] === 'foo' ) {
+			echo 'bar';
+		} elseif ( $_POST['name'] === 'peter' ) {
+			echo 'pan';
+		} else {
+			echo 'ERROR';
+		}
+!!!128386.php!!!	xml(in req : )
+		header( 'Content-type: text/xml' );
+		if ( $req->query['cal'] !== '5-2' && $_POST['cal'] !== '5-2' ) {
+			echo '<error>ERROR</error>';
+			return;
+		}
+		echo "<math><calculation>5-2</calculation><result>3</result></math>\n";
+!!!128514.php!!!	atom(in req : )
+		header( 'Content-type: atom+xml' );
+		echo '<root><element /></root>';
+!!!128642.php!!!	script(in req : )
+		if ( isset( $req->query['header'] ) ) {
+			if ( $req->query['header'] === 'ecma' ) {
+				header( 'Content-type: application/ecmascript' );
+			} else {
+				header( 'Content-type: text/javascript' );
+			}
+		} else {
+			header( 'Content-type: text/html' );
+		}
+		echo 'ok( true, "mock executed" );';
+!!!128770.php!!!	testbar(in req : )
+		echo 'this.testBar = "bar";
+jQuery("#ap").html("bar");
+ok( true, "mock executed");';
+!!!128898.php!!!	json(in req : )
+		if ( isset( $req->query['header'] ) ) {
+			header( 'Content-type: application/json' );
+		}
+
+		if ( isset( $req->query['array'] ) ) {
+			echo '[ {"name": "John", "age": 21}, {"name": "Peter", "age": 25 } ]';
+		} else {
+			echo '{ "data": {"lang": "en", "length": 25} }';
+		}
+!!!129026.php!!!	jsonp(in req : )
+		if ( isset( $req->query['callback'] ) ) {
+			$callback = $req->query['callback'];
+		} elseif ( $req->method === 'GET' ) {
+			// Try REST-like path
+			preg_match( '/\/([^\/?]+)\?.+$/', $req->url, $m );
+			$callback = $m[1];
+		} else {
+			$callback = $_POST['callback'];
+		}
+		if ( isset( $req->query['array'] ) ) {
+			echo $callback . '([ {"name": "John", "age": 21}, {"name": "Peter", "age": 25 } ])';
+		} else {
+			echo $callback . '({ "data": {"lang": "en", "length": 25} })';
+		}
+!!!129154.php!!!	xmlOverJsonp(in req : )
+		$callback = $_REQUEST['callback'];
+		$text = json_encode( file_get_contents( __DIR__ . '/with_fries.xml' ) );
+		echo "$callback($text)\n";
+!!!129282.php!!!	error(in req : )
+		header( 'HTTP/1.0 400 Bad Request' );
+		if ( isset( $req->query['json'] ) ) {
+			header( 'Content-Type: application/json' );
+			echo '{ "code": 40, "message": "Bad Request" }';
+		} else {
+			echo 'plain text message';
+		}
+!!!129410.php!!!	headers(in req : )
+		header( 'Sample-Header: Hello World' );
+		header( 'Empty-Header: ' );
+		header( 'Sample-Header2: Hello World 2' );
+
+		foreach ( explode( '|' , $req->query[ 'keys' ] ) as $key ) {
+			// Only echo if key exists in the header
+			if ( isset( $req->headers[ strtoupper( $key ) ] ) ) {
+				echo "$key: " . $req->headers[ strtoupper( $key ) ] . "\n";
+			}
+		}
+
+!!!129538.php!!!	echoData(in req : )
+		echo file_get_contents('php://input');
+!!!129666.php!!!	echoQuery(in req : )
+		echo $_SERVER['QUERY_STRING'];
+!!!129794.php!!!	echoMethod(in req : )
+		echo $req->method;
+!!!129922.php!!!	echoHtml(in req : )
+		header( 'Content-type: text/html' );
+		echo '<div id="method">' . $req->method . '</div>';
+		echo '<div id="query">' . $_SERVER['QUERY_STRING'] . '</div>';
+		echo '<div id="data">' . file_get_contents('php://input') . '</div>';
+!!!130050.php!!!	etag(in req : )
+		$hash = md5( $req->query['ts'] );
+		$etag = 'W/"' . $hash . '"';
+
+		$ifNoneMatch = isset( $req->headers['IF-NONE-MATCH'] ) ? $req->headers['IF-NONE-MATCH'] : '';
+		if ($ifNoneMatch === $etag) {
+			header('HTTP/1.0 304 Not Modified');
+			return;
+		}
+
+		header("Etag: $etag");
+		echo "ETag: $etag\n";
+		if ( $ifNoneMatch ) {
+			echo "If-None-Match: $ifNoneMatch\n";
+		}
+!!!130178.php!!!	ims(in req : )
+		$ts = $req->query['ts'];
+
+		$ims = isset( $req->headers['IF-MODIFIED-SINCE'] ) ? $req->headers['IF-MODIFIED-SINCE'] : '';
+		if ($ims === $ts) {
+			header('HTTP/1.0 304 Not Modified');
+			return;
+		}
+
+		header("Last-Modified: $ts");
+		echo "Last-Modified: $ts\n";
+		if ( $ims ) {
+			echo "If-Modified-Since: $ims\n";
+		}
+!!!130306.php!!!	status(in req : )
+		header( "HTTP/1.0 {$req->query['code']} {$req->query['text']}" );
+!!!130434.php!!!	testHTML(in req : )
+		header( 'Content-type: text/html' );
+		$html = file_get_contents( __DIR__ . '/test.include.html' );
+		$html = str_replace( '{{baseURL}}', $req->query['baseURL'], $html );
+		echo $html;
+!!!130562.php!!!	cspFrame(in req : )
+		// This is CSP only for browsers with "Content-Security-Policy" header support
+		// i.e. no old WebKit or old Firefox
+		header( "Content-Security-Policy: default-src 'self'; report-uri ./mock.php?action=cspLog" );
+		header( 'Content-type: text/html' );
+		echo file_get_contents( __DIR__ . '/csp.include.html' );
+!!!130690.php!!!	cspLog(in req : )
+		file_put_contents( $this->cspFile, 'error' );
+!!!130818.php!!!	cspClean(in req : )
+		file_put_contents( $this->cspFile, '' );
+		unlink( $this->cspFile );
+!!!130946.php!!!	__construct()
+		$this->cspFile = __DIR__ . '/support/csp.log';
+!!!131074.php!!!	respond(in req : stdClass)
+		if ( !isset( $req->query['action'] ) || !method_exists( $this, $req->query['action'] ) ) {
+			header( "HTTP/1.0 400 Bad Request" );
+			echo "Invalid action query.\n";
+			return;
+		}
+		$this->{$req->query['action']}( $req );

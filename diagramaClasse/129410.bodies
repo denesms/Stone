@@ -1,0 +1,87 @@
+class Usuario
+!!!151682.php!!!	Usuario(in idusuario : , in nome : , in cpf : , in rg : , in login : , in senha : , in email : , in telefone : , in cidade : , in estado : , in permissao : , in fotoperfil : )
+
+        $this->idusuario = $idusuario;
+        $this->nome = $nome;
+        $this->cpf = $cpf;
+        $this->rg = $rg;
+        $this->login = $login;
+        $this->senha = $senha;
+        $this->email = $email;
+        $this->telefone = $telefone;
+        $this->cidade = $cidade;
+        $this->estado = $estado;
+        $this->permissao = $permissao;
+        $this->fotoperfil = $fotoperfil;
+!!!151810.php!!!	getIdusuario()
+
+        return $this->idusuario;
+!!!151938.php!!!	getNome()
+
+        return $this->nome;
+!!!152066.php!!!	getCpf()
+
+        return $this->cpf;
+!!!152194.php!!!	getRg()
+
+        return $this->rg;
+!!!152322.php!!!	getLogin()
+
+        return $this->login;
+!!!152450.php!!!	getSenha()
+
+        return $this->senha;
+!!!152578.php!!!	getEmail()
+
+        return $this->email;
+!!!152706.php!!!	getTelefone()
+
+        return $this->telefone;
+!!!152834.php!!!	getCidade()
+
+        return $this->cidade;
+!!!152962.php!!!	getEstado()
+
+        return $this->estado;
+!!!153090.php!!!	getPermissao()
+
+        return $this->permissao;
+!!!153218.php!!!	setIdusuario(in idusuario : )
+
+        $this->idusuario = $idusuario;
+!!!153346.php!!!	setNome(in nome : )
+
+        $this->nome = $nome;
+!!!153474.php!!!	setCpf(in cpf : )
+
+        $this->cpf = $cpf;
+!!!153602.php!!!	setRg(in rg : )
+
+        $this->rg = $rg;
+!!!153730.php!!!	setLogin(in login : )
+
+        $this->login = $login;
+!!!153858.php!!!	setSenha(in senha : )
+
+        $this->senha = $senha;
+!!!153986.php!!!	setEmail(in email : )
+
+        $this->email = $email;
+!!!154114.php!!!	setTelefone(in telefone : )
+
+        $this->telefone = $telefone;
+!!!154242.php!!!	setCidade(in cidade : )
+
+        $this->cidade = $cidade;
+!!!154370.php!!!	setEstado(in estado : )
+
+        $this->estado = $estado;
+!!!154498.php!!!	setPermissao(in permissao : )
+
+        $this->permissao = $permissao;
+!!!154626.php!!!	getFotoperfil()
+
+        return $this->fotoperfil;
+!!!154754.php!!!	setFotoperfil(in fotoperfil : )
+
+        $this->fotoperfil = $fotoperfil;

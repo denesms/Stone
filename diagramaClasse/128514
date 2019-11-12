@@ -1,0 +1,462 @@
+format 222
+"data" // Stone::bootstrap4::jquery::test::data
+  revision 1
+  modified_by 2 "denes"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  php_dir "/home/denes/NetBeansProjects/Stone/bootstrap4/jquery/test/data/"
+  deploymentview 128258 "data"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128258 "mock"
+      stereotype "source"
+      php_src "<?php
+${definition}
+
+
+// Don't include PHP errors in http response
+error_reporting( 0 );
+
+// Collect headers
+$headers = array();
+foreach ( $_SERVER as $name => $value ) {
+	if ( substr( $name, 0, 5 ) === 'HTTP_' ) {
+		$name = str_replace( '_', '-', substr( $name, 5 ) );
+		$headers[$name] = $value;
+	} elseif ( $name === 'CONTENT_LENGTH' ) {
+		$headers['CONTENT-LENGTH'] = $value;
+	} elseif ( $name === 'CONTENT_TYPE' ) {
+		$headers['CONTENT-TYPE'] = $value;
+	}
+}
+
+$mock = new MockServer();
+$req = (object) array(
+	'query' => $_GET,
+	'headers' => $headers,
+	'method' => $_SERVER['REQUEST_METHOD'],
+	'url' => $_SERVER['REQUEST_URI'],
+);
+$mock->respond( $req );
+"
+      associated_elems
+	class_ref 128002 // MockServer
+      end
+    end
+  end
+
+  classview 128002 "data"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 128002 "MockServer"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "
+Keep in sync with /test/middleware-mockserver.js
+"
+      operation 128002 "contentType"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 128130 "wait"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 128258 "name"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 128386 "xml"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 128514 "atom"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 128642 "script"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 128770 "testbar"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " Used to be in test.js, but was renamed to testbar.php
+ https://github.com/jquery/jquery/commit/d89c278a33#commitcomment-23423165"
+      end
+
+      operation 128898 "json"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 129026 "jsonp"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 129154 "xmlOverJsonp"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 129282 "error"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 129410 "headers"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 129538 "echoData"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 129666 "echoQuery"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 129794 "echoMethod"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 129922 "echoHtml"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 130050 "etag"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 130178 "ims"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 130306 "status"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 130434 "testHTML"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 130562 "cspFrame"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 130690 "cspLog"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 130818 "cspClean"
+	protected explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 130946 "__construct"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 131074 "respond"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "req" explicit_type "stdClass"
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${t0} ${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+  end
+end

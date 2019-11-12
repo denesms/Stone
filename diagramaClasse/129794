@@ -1,0 +1,4077 @@
+format 222
+"Model" // Stone::Model
+  revision 1
+  modified_by 2 "denes"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  php_dir "/home/denes/NetBeansProjects/Stone/Model/"
+  deploymentview 129026 "Model"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 129026 "connection"
+      stereotype "source"
+      php_src "<?php
+ 
+Class Connection {
+ 
+private  $server = \"pgsql:host=localhost dbname=dbPCO\";   // O localhost foi alterado para 10.9.108.143 para acesso ao banco de dados via rede
+ 
+private  $user = \"postgres\";
+ 
+private  $pass = \"123\";
+ 
+private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
+ 
+protected $con;
+ 
+          	public function openConnection()
+ 
+           	{
+ 
+               try
+ 
+                 {
+ 
+	        $this->con = new PDO($this->server, $this->user,$this->pass,$this->options);
+ 
+	        return $this->con;
+ 
+                  }
+ 
+               catch (PDOException $e)
+ 
+                 {
+ 
+                     echo \"ERRO NA CONEXÃO\" . $e->getMessage();
+ 
+                 }
+ 
+           	}
+ 
+public function closeConnection() {
+ 
+   	$this->con = null;
+ 
+	}
+ 
+}
+ 
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 129154 "Conteudo"
+      stereotype "source"
+      php_src "<?php
+${definition}
+
+"
+      associated_elems
+	class_ref 128130 // Conteudo
+      end
+    end
+
+    artifact 129282 "ConteudoDAO"
+      stereotype "source"
+      php_src "<?php
+
+require_once 'connection.php';
+require_once 'Conteudo.php';
+${definition}
+
+
+
+?>"
+      associated_elems
+	class_ref 128258 // ConteudoDAO
+      end
+    end
+
+    artifact 129410 "Curso"
+      stereotype "source"
+      php_src "<?php
+${definition}
+
+
+
+?>"
+      associated_elems
+	class_ref 128386 // Curso
+      end
+    end
+
+    artifact 129538 "CursoDAO"
+      stereotype "source"
+      php_src "<?php
+
+require_once 'connection.php';
+require_once 'Curso.php';
+${definition}
+
+
+
+?>"
+      associated_elems
+	class_ref 128514 // cursoDAO
+      end
+    end
+
+    artifact 129666 "Matricula"
+      stereotype "source"
+      php_src "<?php
+${definition}
+
+"
+      associated_elems
+	class_ref 128642 // Matricula
+      end
+    end
+
+    artifact 129794 "MatriculaDAO"
+      stereotype "source"
+      php_src "<?php
+
+require_once 'connection.php';
+require_once 'Matricula.php';
+${definition}
+
+
+?>"
+      associated_elems
+	class_ref 128770 // MatriculaDAO
+      end
+    end
+
+    artifact 129922 "questoes"
+      stereotype "source"
+      php_src "<?php
+${definition}
+
+"
+      associated_elems
+	class_ref 128898 // questoes
+      end
+    end
+
+    artifact 130050 "questoesDAO"
+      stereotype "source"
+      php_src "<?php
+
+require_once 'connection.php';
+require_once 'questoes.php';
+
+${definition}
+
+
+?>"
+      associated_elems
+	class_ref 129026 // QuestoesDAO
+      end
+    end
+
+    artifact 130178 "Turma"
+      stereotype "source"
+      php_src "<?php
+${definition}
+
+"
+      associated_elems
+	class_ref 129154 // Turma
+      end
+    end
+
+    artifact 130306 "TurmaDAO"
+      stereotype "source"
+      php_src "<?php
+
+include_once 'connection.php';
+include_once 'Turma.php';
+${definition}
+
+
+
+?>"
+      associated_elems
+	class_ref 129282 // turmaDAO
+      end
+    end
+
+    artifact 130434 "Usuario"
+      stereotype "source"
+      php_src "<?php
+${definition}
+
+"
+      associated_elems
+	class_ref 129410 // Usuario
+      end
+    end
+
+    artifact 130562 "UsuarioDAO"
+      stereotype "source"
+      php_src "<?php
+
+require_once 'connection.php';
+include 'Usuario.php';
+${definition}
+
+
+
+?>"
+      associated_elems
+	class_ref 129538 // UsuarioDAO
+      end
+    end
+  end
+
+  classview 128130 "Model"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 128130 "Conteudo"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 128002 "idconteudo"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Variaveis do tipo privado"
+      end
+
+      attribute 128130 "ordem"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128258 "texto"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128386 "imagem"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128514 "video"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128642 "idcurso"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128770 "capitulo"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128898 "secao"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129026 "nomecurso"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129154 "titulo"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 131202 "Conteudo"
+	public explicit_return_type ""
+	nparams 10
+	  param in name "idconteudo" explicit_type ""
+	  param in name "ordem" explicit_type ""
+	  param in name "texto" explicit_type ""
+	  param in name "imagem" explicit_type ""
+	  param in name "video" explicit_type ""
+	  param in name "idcurso" explicit_type ""
+	  param in name "capitulo" explicit_type ""
+	  param in name "secao" explicit_type ""
+	  param in name "nomecurso" explicit_type ""
+	  param in name "titulo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}, ${p6}${v6}, ${p7}${v7}, ${p8}${v8}, ${p9}${v9}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " Construtor da classe"
+      end
+
+      operation 131330 "getIdconteudo"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== Métodos Acessores GET & SET ===============     "
+      end
+
+      operation 131458 "getOrdem"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 131586 "getTexto"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 131714 "getImagem"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 131842 "getVideo"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 131970 "getIdcurso"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 132098 "getCapitulo"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 132226 "getSecao"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 132354 "getNomecurso"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 132482 "getTitulo"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 132610 "setTitulo"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "titulo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 132738 "setIdconteudo"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idconteudo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 132866 "setOrdem"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "ordem" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 132994 "setTexto"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "texto" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 133122 "setImagem"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "imagem" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 133250 "setVideo"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "video" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 133378 "setIdcurso"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idcurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 133506 "setCapitulo"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "capitulo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 133634 "setSecao"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "secao" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 133762 "set"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "nomecurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 128258 "ConteudoDAO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 129282 "conn"
+	package explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 133890 "ConteudoDAO"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 134018 "Create"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "conteudo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " public function Create($ordem, $texto, $imagem, $video, $curso, $secao, $capitulo) {
+
+
+$sql = \"INSERT INTO conteudo (ordem,texto,imagem,video,idcurso,secao,capitulo)
+VALUES ($ordem, '$texto', '$imagem','$video',$curso,$secao,$capitulo)\";
+
+$this->conn->exec($sql);
+} 
+=========== Cadastro ============================="
+      end
+
+      operation 134146 "CreateAntesDepois"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "conteudo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 134274 "Read"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa todos os Campos ============================="
+      end
+
+      operation 134402 "ReadByID"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa por ID ============================="
+      end
+
+      operation 134530 "ReadByIDCurso"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 134658 "Update"
+	public explicit_return_type ""
+	nparams 9
+	  param in name "id" explicit_type ""
+	  param in name "ordem" explicit_type ""
+	  param in name "texto" explicit_type ""
+	  param in name "imagem" explicit_type ""
+	  param in name "video" explicit_type ""
+	  param in name "curso" explicit_type ""
+	  param in name "secao" explicit_type ""
+	  param in name "capitulo" explicit_type ""
+	  param in name "titulo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}, ${p6}${v6}, ${p7}${v7}, ${p8}${v8}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "================ UPDATE ==================="
+      end
+
+      operation 134786 "Delete"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== DELETE ==============="
+      end
+
+      operation 134914 "itemPorPagina"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "pagina1" explicit_type ""
+	  param in name "qItens" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "======================= Paginação ==========================="
+      end
+
+      operation 135042 "Total"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 135170 "numTotal"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "itens_por_pagina" explicit_type ""
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 135298 "paginacao"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 135426 "paginacaoByCurso"
+	public explicit_return_type ""
+	nparams 4
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	  param in name "idCurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 128386 "Curso"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 129410 "id"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Variaveis do tipo privado"
+      end
+
+      attribute 129538 "nome"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129666 "descricao"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129794 "cargaHoraria"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129922 "turma"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 135554 "Curso"
+	public explicit_return_type ""
+	nparams 4
+	  param in name "id" explicit_type ""
+	  param in name "nome" explicit_type ""
+	  param in name "descricao" explicit_type ""
+	  param in name "cargaHoraria" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " Construtor da classe"
+      end
+
+      operation 135682 "Curso2"
+	public explicit_return_type ""
+	nparams 5
+	  param in name "id" explicit_type ""
+	  param in name "nome" explicit_type ""
+	  param in name "descricao" explicit_type ""
+	  param in name "cargaHoraria" explicit_type ""
+	  param in name "turma" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 135810 "getId"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== Métodos Acessores GET & SET ===============     "
+      end
+
+      operation 135938 "getNome"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 136066 "getDescricao"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 136194 "getCargaHoraria"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 136322 "getTurma"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 136450 "setId"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 136578 "setNome"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "nome" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 136706 "setDescricao"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "descricao" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 136834 "setCargaHoraria"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "cargaHoraria" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 136962 "setTurma"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "turma" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 128514 "cursoDAO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 130050 "conn"
+	package explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 137090 "cursoDAO"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 137218 "Create"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "curso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 137346 "Read"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "  public function Create($nomecurso, $descricao, $cargahoraria) {
+
+
+$sql = \"INSERT INTO curso (nomecurso, descricao, cargahoraria)
+VALUES ('$nomecurso', '$descricao', '$cargahoraria')\";
+
+$this->conn->exec($sql);
+} 
+=========== Pesquisa todos os Campos ============================="
+      end
+
+      operation 137474 "ReadCursoByIDUsuario"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "idusuario" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 137602 "ReadCursoCadastro"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "idusuario" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 137730 "ReadProf"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa por ID do Professor ============================="
+      end
+
+      operation 137858 "ReadByID"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa por ID ============================="
+      end
+
+      operation 137986 "Update"
+	public explicit_return_type ""
+	nparams 4
+	  param in name "id" explicit_type ""
+	  param in name "nomecurso" explicit_type ""
+	  param in name "descricao" explicit_type ""
+	  param in name "cargahoraria" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "================ UPDATE ==================="
+      end
+
+      operation 138114 "Delete"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== DELETE ==============="
+      end
+
+      operation 138242 "itemPorPagina"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "pagina1" explicit_type ""
+	  param in name "qItens" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "======================= Paginação ==========================="
+      end
+
+      operation 138370 "numTotal"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 138498 "paginacao"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 138626 "paginacao3"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 138754 "numTotal2"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "itens_por_pagina" explicit_type ""
+	  param in name "idusuario" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "======================= Paginação2 ==========================="
+      end
+
+      operation 138882 "paginacaoCadasCurso"
+	public explicit_return_type ""
+	nparams 4
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	  param in name "idusuario" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 128642 "Matricula"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 130178 "idmatricula"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Variaveis do tipo privado"
+      end
+
+      attribute 130306 "notas"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130434 "ultimoslide"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130562 "ultimocapitulo"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130690 "ultimasecao"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130818 "idturma"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130946 "idaluno"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131074 "nomeAluno"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131202 "nomecurso"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 139010 "__construct"
+	package explicit_return_type ""
+	nparams 9
+	  param in name "idmatricula" explicit_type ""
+	  param in name "notas" explicit_type ""
+	  param in name "ultimoslide" explicit_type ""
+	  param in name "ultimocapitulo" explicit_type ""
+	  param in name "ultimasecao" explicit_type ""
+	  param in name "idturma" explicit_type ""
+	  param in name "idaluno" explicit_type ""
+	  param in name "nomeAluno" explicit_type ""
+	  param in name "nomecurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}, ${p6}${v6}, ${p7}${v7}, ${p8}${v8}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " Construtor da classe"
+      end
+
+      operation 139138 "getIdmatricula"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== Métodos Acessores GET & SET ===============      "
+      end
+
+      operation 139266 "getNotas"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 139394 "getUltimoslide"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 139522 "getUltimocapitulo"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 139650 "getUltimasecao"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 139778 "getIdturma"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 139906 "getIdaluno"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 140034 "getNomeAluno"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 140162 "getNomecurso"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 140290 "setIdmatricula"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idmatricula" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 140418 "setNotas"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "notas" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 140546 "setUltimoslide"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "ultimoslide" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 140674 "setUltimocapitulo"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "ultimocapitulo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 140802 "setUltimasecao"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "ultimasecao" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 140930 "setIdturma"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idturma" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 141058 "setIdaluno"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idaluno" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 141186 "setNomeAluno"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "nomeAluno" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 141314 "setNomecurso"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "nomecurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 128770 "MatriculaDAO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 131330 "conn"
+	package explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 141442 "MatriculaDAO"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 141570 "Create"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "matricula" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 141698 "Create2"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "matricula" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 141826 "Read"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa todos os Campos ============================="
+      end
+
+      operation 141954 "ReadByID"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa por ID ============================="
+      end
+
+      operation 142082 "MatriVerific"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "aluno" explicit_type ""
+	  param in name "turma" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 142210 "MatriculaId"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "idcurso" explicit_type ""
+	  param in name "idusuario" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 142338 "ReadNota"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "idusuario" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa das notas ============================="
+      end
+
+      operation 142466 "Update"
+	public explicit_return_type ""
+	nparams 9
+	  param in name "id" explicit_type ""
+	  param in name "nota1" explicit_type ""
+	  param in name "nota2" explicit_type ""
+	  param in name "notafinal" explicit_type ""
+	  param in name "ultimoslide" explicit_type ""
+	  param in name "ultimocapitulo" explicit_type ""
+	  param in name "ultimasecao" explicit_type ""
+	  param in name "turma" explicit_type ""
+	  param in name "aluno" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}, ${p6}${v6}, ${p7}${v7}, ${p8}${v8}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "================ UPDATE ==================="
+      end
+
+      operation 142594 "Delete"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== DELETE ==============="
+      end
+
+      operation 142722 "itemPorPagina"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "pagina1" explicit_type ""
+	  param in name "qItens" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "======================= Paginação ==========================="
+      end
+
+      operation 142850 "numTotal"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 142978 "paginacao"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 128898 "questoes"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 131458 "idq"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Variaveis do tipo privado"
+      end
+
+      attribute 131586 "pergunta"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131714 "ra"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131842 "rb"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 131970 "rc"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132098 "rd"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132226 "va"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132354 "vb"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132482 "vc"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132610 "vd"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132738 "idcurso"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 143106 "__construct"
+	package explicit_return_type ""
+	nparams 11
+	  param in name "idq" explicit_type ""
+	  param in name "pergunta" explicit_type ""
+	  param in name "ra" explicit_type ""
+	  param in name "rb" explicit_type ""
+	  param in name "rc" explicit_type ""
+	  param in name "rd" explicit_type ""
+	  param in name "va" explicit_type ""
+	  param in name "vb" explicit_type ""
+	  param in name "vc" explicit_type ""
+	  param in name "vd" explicit_type ""
+	  param in name "idcurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}, ${p6}${v6}, ${p7}${v7}, ${p8}${v8}, ${p9}${v9}, ${p10}${v10}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " Construtor da classe"
+      end
+
+      operation 143234 "getIdq"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== Métodos Acessores GET & SET ===============     "
+      end
+
+      operation 143362 "getPergunta"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 143490 "getRa"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 143618 "getRb"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 143746 "getRc"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 143874 "getRd"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 144002 "getVa"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 144130 "getVb"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 144258 "getVc"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 144386 "getVd"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 144514 "getIdcurso"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 144642 "setIdq"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idq" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 144770 "setPergunta"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "pergunta" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 144898 "setRa"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "ra" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 145026 "setRb"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "rb" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 145154 "setRc"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "rc" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 145282 "setRd"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "rd" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 145410 "setVa"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "va" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 145538 "setVb"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "vb" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 145666 "setVc"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "vc" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 145794 "setVd"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "vd" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 145922 "setIdcurso"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idcurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 129026 "QuestoesDAO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 132866 "conn"
+	package explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 146050 "questoesDao"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 146178 "Create"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "questoes" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " public function Create($ordem, $texto, $imagem, $video, $curso, $secao, $capitulo) {
+
+
+$sql = \"INSERT INTO conteudo (ordem,texto,imagem,video,idcurso,secao,capitulo)
+VALUES ($ordem, '$texto', '$imagem','$video',$curso,$secao,$capitulo)\";
+
+$this->conn->exec($sql);
+} 
+=========== Cadastro ============================="
+      end
+
+      operation 146306 "CreateAntesDepois"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "conteudo" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 146434 "Read"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa todos os Campos ============================="
+      end
+
+      operation 146562 "ReadByID"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa por ID ============================="
+      end
+
+      operation 146690 "Update"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "questao" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "================ UPDATE ===================
+    public function Update($id, $ordem, $texto, $imagem, $video, $curso, $secao, $capitulo, $titulo) {
+        
+        
+        $stmt = $this->conn->prepare('UPDATE conteudo SET ordem = :ordem,texto = :texto,imagem = :imagem,video = :video,idcurso =:curso,secao =:secao,capitulo =:capitulo,titulo =:titulo WHERE idconteudo = :id');
+        $stmt->execute(array(\":id\" => $id, \":ordem\" => $ordem, \":texto\" => $texto, \":imagem\" => $imagem, \":video\" => $video, \":curso\" => $curso, \":secao\" => $secao, \":capitulo\" => $capitulo, \":titulo\" => $titulo,));
+    
+        
+    }"
+      end
+
+      operation 146818 "Delete"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== DELETE ==============="
+      end
+
+      operation 146946 "itemPorPagina"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "pagina1" explicit_type ""
+	  param in name "qItens" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "======================= Paginação ==========================="
+      end
+
+      operation 147074 "Total"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 147202 "numTotal"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "itens_por_pagina" explicit_type ""
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 147330 "paginacao"
+	public explicit_return_type ""
+	nparams 4
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 129154 "Turma"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 132994 "idturma"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Variaveis do Tipo Privado  "
+      end
+
+      attribute 133122 "datainicio"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133250 "datafinal"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133378 "idcurso"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133506 "idprofessor1"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133634 "idprofessor2"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133762 "nomecurso"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133890 "nomeprofessor1"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 134018 "nomeprofessor2"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 134146 "Tdescricao"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 147458 "Turma"
+	public explicit_return_type ""
+	nparams 10
+	  param in name "idturma" explicit_type ""
+	  param in name "datainicio" explicit_type ""
+	  param in name "datafinal" explicit_type ""
+	  param in name "idcurso" explicit_type ""
+	  param in name "nomecurso" explicit_type ""
+	  param in name "idprofessor1" explicit_type ""
+	  param in name "nomeprofessor1" explicit_type ""
+	  param in name "idprofessor2" explicit_type ""
+	  param in name "nomeprofessor2" explicit_type ""
+	  param in name "descricao" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}, ${p6}${v6}, ${p7}${v7}, ${p8}${v8}, ${p9}${v9}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " Construtor da Classe"
+      end
+
+      operation 147586 "getTdescricao"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== Métodos Acessores GET & SET ===============  "
+      end
+
+      operation 147714 "setTdescricao"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "Tdescricao" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 147842 "getIdturma"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 147970 "getDatainicio"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 148098 "getDatafinal"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 148226 "getIdcurso"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 148354 "getIdprofessor1"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 148482 "getIdprofessor2"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 148610 "getNomecurso"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 148738 "getNomeprofessor1"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 148866 "getNomeprofessor2"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 148994 "setIdturma"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idturma" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 149122 "setDatainicio"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "datainicio" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 149250 "setDatafinal"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "datafinal" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 149378 "setIdcurso"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idcurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 149506 "setIdprofessor1"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idprofessor1" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 149634 "setIdprofessor2"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idprofessor2" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 149762 "setNomecurso"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "nomecurso" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 149890 "setNomeprofessor1"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "nomeprofessor1" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 150018 "setNomeprofessor2"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "nomeprofessor2" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 129282 "turmaDAO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 134274 "conn"
+	package explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 150146 "turmaDAO"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 150274 "Create"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "turma" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Cadastro ============================="
+      end
+
+      operation 150402 "Create2"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "turma" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 150530 "Read"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa todos os Campos ============================="
+      end
+
+      operation 150658 "ReadData"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 150786 "ReadByID"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa por ID ============================="
+      end
+
+      operation 150914 "ReadByIDCurso"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 151042 "Update"
+	public explicit_return_type ""
+	nparams 6
+	  param in name "id" explicit_type ""
+	  param in name "datainicio" explicit_type ""
+	  param in name "datafinal" explicit_type ""
+	  param in name "idcurso" explicit_type ""
+	  param in name "idprofessor1" explicit_type ""
+	  param in name "idprofessor2" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "================ UPDATE ==================="
+      end
+
+      operation 151170 "Delete"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== DELETE ==============="
+      end
+
+      operation 151298 "itemPorPagina"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "pagina1" explicit_type ""
+	  param in name "qItens" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "======================= Paginação ==========================="
+      end
+
+      operation 151426 "numTotal"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 151554 "paginacao"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 129410 "Usuario"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 134402 "idusuario"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+	comment " Variaveis do Tipo Privado"
+      end
+
+      attribute 134530 "nome"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 134658 "cpf"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 134786 "rg"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 134914 "login"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135042 "senha"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135170 "email"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135298 "telefone"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135426 "cidade"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135554 "estado"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135682 "permissao"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 135810 "fotoperfil"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 151682 "Usuario"
+	public explicit_return_type ""
+	nparams 12
+	  param in name "idusuario" explicit_type ""
+	  param in name "nome" explicit_type ""
+	  param in name "cpf" explicit_type ""
+	  param in name "rg" explicit_type ""
+	  param in name "login" explicit_type ""
+	  param in name "senha" explicit_type ""
+	  param in name "email" explicit_type ""
+	  param in name "telefone" explicit_type ""
+	  param in name "cidade" explicit_type ""
+	  param in name "estado" explicit_type ""
+	  param in name "permissao" explicit_type ""
+	  param in name "fotoperfil" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}, ${p6}${v6}, ${p7}${v7}, ${p8}${v8}, ${p9}${v9}, ${p10}${v10}, ${p11}${v11}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment " Construtor da Classe"
+      end
+
+      operation 151810 "getIdusuario"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== Métodos Acessores GET & SET ===============      "
+      end
+
+      operation 151938 "getNome"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 152066 "getCpf"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 152194 "getRg"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 152322 "getLogin"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 152450 "getSenha"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 152578 "getEmail"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 152706 "getTelefone"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 152834 "getCidade"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 152962 "getEstado"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 153090 "getPermissao"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 153218 "setIdusuario"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "idusuario" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 153346 "setNome"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "nome" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 153474 "setCpf"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "cpf" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 153602 "setRg"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "rg" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 153730 "setLogin"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "login" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 153858 "setSenha"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "senha" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 153986 "setEmail"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "email" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 154114 "setTelefone"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "telefone" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 154242 "setCidade"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "cidade" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 154370 "setEstado"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "estado" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 154498 "setPermissao"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "permissao" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 154626 "getFotoperfil"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 154754 "setFotoperfil"
+	package explicit_return_type ""
+	nparams 1
+	  param in name "fotoperfil" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    class 129538 "UsuarioDAO"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl "${comment}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 135938 "conn"
+	package explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl "  ${comment}${visibility}${const}${static}${var}${name}${value};
+"
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 154882 "UsuarioDAO"
+	package explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${visibility}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 155010 "Create"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "usuario" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 155138 "Read"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa todos os Campos ============================="
+      end
+
+      operation 155266 "ReadProFeADM"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa Campos do PRofessor e Administrador ============================="
+      end
+
+      operation 155394 "ReadByID"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=========== Pesquisa por ID ========================="
+      end
+
+      operation 155522 "Update"
+	public explicit_return_type ""
+	nparams 12
+	  param in name "id" explicit_type ""
+	  param in name "nome" explicit_type ""
+	  param in name "cpf" explicit_type ""
+	  param in name "rg" explicit_type ""
+	  param in name "login" explicit_type ""
+	  param in name "senha" explicit_type ""
+	  param in name "email" explicit_type ""
+	  param in name "telefone" explicit_type ""
+	  param in name "cidade" explicit_type ""
+	  param in name "estado" explicit_type ""
+	  param in name "permissao" explicit_type ""
+	  param in name "fotoperfil" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}, ${p3}${v3}, ${p4}${v4}, ${p5}${v5}, ${p6}${v6}, ${p7}${v7}, ${p8}${v8}, ${p9}${v9}, ${p10}${v10}, ${p11}${v11}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "================ UPDATE ==================="
+      end
+
+      operation 155650 "UpdateFoto"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "id" explicit_type ""
+	  param in name "fotoperfil" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "================ UPDATE FOTO PERFIL ==================="
+      end
+
+      operation 155778 "Delete"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "=============== DELETE ==============="
+      end
+
+      operation 155906 "itemPorPagina"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "pagina1" explicit_type ""
+	  param in name "qItens" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}${)}${type}
+{
+  ${body}}
+"
+	
+	
+	comment "======================= Paginação ==========================="
+      end
+
+      operation 156034 "numTotal"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 156162 "paginacao"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "pagina" explicit_type ""
+	  param in name "numPagina" explicit_type ""
+	  param in name "itens_por_pagina" explicit_type ""
+	
+	
+	preserve_php_body_indent php_def "  ${comment}${final}${visibility}${abstract}${static}function ${name}${(}${p0}${v0}, ${p1}${v1}, ${p2}${v2}${)}${type}
+{
+  ${body}}
+"
+	
+	
+      end
+    end
+
+    classdiagram 128002 "diagramClass"
+      classdiagramsettings member_max_width 0 end
+      size A4
+    end
+  end
+
+  package_ref 129922 // php
+end

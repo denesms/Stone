@@ -1,0 +1,1079 @@
+format 222
+"questionario" // Stone::questionario
+  revision 1
+  modified_by 2 "denes"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  php_dir "/home/denes/NetBeansProjects/Stone/questionario/"
+  deploymentview 129282 "questionario"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 132738 "a_add"
+      stereotype "source"
+      php_src "<?php
+
+require 'auth.php';
+require 'config.php';
+
+if (isset($_POST['tambah'])) {
+
+  $pergunta    = filter_input(INPUT_POST, 'pergunta', FILTER_SANITIZE_STRING);
+  $pilihan_1     = filter_input(INPUT_POST, 'pilihan_1', FILTER_SANITIZE_STRING);
+  $pilihan_2     = filter_input(INPUT_POST, 'pilihan_2', FILTER_SANITIZE_STRING);
+  $pilihan_3     = filter_input(INPUT_POST, 'pilihan_3', FILTER_SANITIZE_STRING);
+  $pilihan_4     = filter_input(INPUT_POST, 'pilihan_4', FILTER_SANITIZE_STRING);
+  $kunci_jawaban = strtolower(filter_input(INPUT_POST, 'kunci_jawaban', FILTER_SANITIZE_STRING));
+
+  try {
+    
+    $stmt = $pdo->query(\"INSERT INTO perguntas (pergunta, pilihan_1, pilihan_2, pilihan_3, pilihan_4, kunci_jawaban) VALUES ('$pergunta', '$pilihan_1', '$pilihan_2', '$pilihan_3', '$pilihan_4', '$kunci_jawaban')\");
+
+    if ($stmt === false) {
+
+      throw new PDOException('Error Processing Request.');
+
+    } else {
+
+      $msg_title = urlencode('Berhasil!');
+      $msg_text  = urlencode('Input perguntas berhasil!');
+      $msg_icon  = 'success';
+      $msg       = 'msg_title=' . $msg_title . '&msg_text=' . $msg_text . '&msg_icon=' . $msg_icon;
+
+      header('Location: a_view.php?' . $msg);
+
+    }
+
+  } catch (PDOException $e) {
+    
+    echo $e->getMessage();
+
+  }
+
+}
+
+if (isset($_SERVER[\"HTTPS\"]) && $_SERVER[\"HTTPS\"] === \"on\") {
+
+  $newUrl = \"https\";
+
+} else $newUrl = \"http\";
+
+$newUrl .= \"://\";
+$newUrl .= $_SERVER[\"HTTP_HOST\"];
+$newUrl .= \"/a_clear.php\";
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 132866 "a_clear"
+      stereotype "source"
+      php_src "<?php
+
+require 'auth.php';
+require 'config.php';
+
+try {
+
+	$stmt = $pdo->query(\"DELETE FROM ppl\");
+
+	if ($stmt === false) {
+
+		throw new PDOException('Error Processing Request.');
+
+	} else {
+
+		$msg_title = urlencode(\"Berhasil!\");
+		$msg_text  = urlencode(\"Scoreboard berhasil dibersihkan!\");
+		$msg_icon  = \"success\";
+		$msg       = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+
+		header(\"Location: a_result.php?\" . $msg);
+	}
+	
+} catch (PDOException $e) {
+
+	echo $e->getMessage();
+	
+}
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 132994 "a_delete"
+      stereotype "source"
+      php_src "<?php
+
+require 'auth.php';
+require 'config.php';
+
+try {
+
+	try {
+
+		if (!isset($_GET['id'])) {
+
+			throw new Exception('Process Can\\'t Be Executed');
+		}
+		
+	} catch (Exception $e) {
+
+		echo $e->getMessage();
+		
+	}
+
+	$id   = $_GET['id'];
+	$stmt = $pdo->query(\"DELETE FROM soal WHERE id=$id\");
+
+	if ($stmt === false) {
+
+		throw new PDOException('Error Processing Request.');
+
+	} else {
+
+		$msg_title = urlencode(\"Berhasil!\");
+		$msg_text  = urlencode(\"Soal berhasil dihapus!\");
+		$msg_icon  = \"success\";
+		$msg       = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+
+		header(\"Location: a_view.php?\" . $msg);
+
+	}
+	
+} catch (PDOException $e) {
+
+	echo $e->getMessage();
+	
+}
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 133122 "a_edit"
+      stereotype "source"
+      php_src "<?php
+
+require 'auth.php';
+require 'config.php';
+
+try {
+
+  try {
+
+    if (!isset($_GET['id'])) {
+
+      throw new Exception('Process Can\\'t Be Executed.');
+
+    }
+    
+  } catch (Exception $e) {
+    
+    echo $e->getMessage();
+
+  }
+
+  if (isset($_POST[\"edit\"])) {
+
+    $id         = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+    $pertanyaan = filter_input(INPUT_POST, 'pergunta', FILTER_SANITIZE_STRING);
+    $pilihan_1  = filter_input(INPUT_POST, 'pilihan_1', FILTER_SANITIZE_STRING);
+    $pilihan_2  = filter_input(INPUT_POST, 'pilihan_2', FILTER_SANITIZE_STRING);
+    $pilihan_3  = filter_input(INPUT_POST, 'pilihan_3', FILTER_SANITIZE_STRING);
+    $pilihan_4  = filter_input(INPUT_POST, 'pilihan_4', FILTER_SANITIZE_STRING);
+    $kunci_jawaban = strtolower(filter_input(INPUT_POST, 'kunci_jawaban', FILTER_SANITIZE_STRING));
+
+    $stmt = $pdo->query(\"UPDATE soal SET pertanyaan='$pertanyaan', pilihan_1='$pilihan_1', pilihan_2='$pilihan_2', pilihan_3='$pilihan_3', pilihan_4='$pilihan_4', kunci_jawaban='$kunci_jawaban' WHERE id=$id\");
+
+    if ($stmt === false) {
+
+      throw new PDOException('Error Processing Request.');
+
+    } else {
+
+      $msg_title = urlencode(\"Berhasil!\");
+      $msg_text  = urlencode(\"Edit soal berhasil!\");
+      $msg_icon  = \"success\";
+      $msg       = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+
+      header(\"Location: a_view.php?\" . $msg);
+
+    }
+
+  } else {
+
+    $id    = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+    $count = $pdo->query(\"SELECT COUNT(*) FROM soal WHERE id=$id\")->fetchColumn();
+
+    if ($count < 1) {
+
+      throw new PDOException('Process Can\\'t Be Executed.');
+      
+    } else {
+
+      $stmt  = $pdo->query(\"SELECT * FROM soal WHERE id=$id\");
+      $row   = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    }
+
+  }
+  
+} catch (PDOException $e) {
+
+  echo $e->getMessage();
+  
+}
+
+if (isset($_SERVER[\"HTTPS\"]) && $_SERVER[\"HTTPS\"] === \"on\") {
+
+  $newUrl = \"https\";
+
+} else $newUrl = \"http\";
+
+$newUrl .= \"://\";
+$newUrl .= $_SERVER[\"HTTP_HOST\"];
+$newUrl .= \"/a_clear.php\";
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 133250 "a_main"
+      stereotype "source"
+      php_src "<?php
+require 'auth.php';
+
+if (isset($_SERVER[\"HTTPS\"]) && $_SERVER[\"HTTPS\"] === \"on\") {
+
+	$newUrl = \"https\";
+
+} else $newUrl = \"http\";
+
+$newUrl .= \"://\";
+$newUrl .= $_SERVER[\"HTTP_HOST\"];
+$newUrl .= \"/a_clear.php\";
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 133378 "a_result"
+      stereotype "source"
+      php_src "<?php
+
+require 'auth.php';
+require 'config.php';
+
+try {
+
+	$stmt = $pdo->query(\"SELECT * FROM ppl ORDER BY score DESC\");
+
+	if ($stmt === false) {
+
+		throw new PDOException('Error Processing Request');
+		
+	}
+	
+} catch (PDOException $e) {
+
+	echo $e->getMessage();
+	
+}
+
+if (isset($_SERVER[\"HTTPS\"]) && $_SERVER[\"HTTPS\"] === \"on\") {
+
+	$newUrl = \"https\";
+
+} else $newUrl = \"http\";
+
+$newUrl .= \"://\";
+$newUrl .= $_SERVER[\"HTTP_HOST\"];
+$newUrl .= \"/a_clear.php\";
+
+?>
+<!DOCTYPE html>
+<html lang=\"id\">
+  <head>
+    <meta charset=\"utf-8\">
+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+    <title>Admin - Insan Penjaga Al-Qur'an</title>
+    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">
+  </head>
+  <body>
+  	<nav class=\"navbar navbar-inverse\">
+	  <div class=\"container\">
+	    <div class=\"navbar-header\">
+	      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">
+	        <span class=\"sr-only\">Toggle navigation</span>
+	        <span class=\"icon-bar\"></span>
+	        <span class=\"icon-bar\"></span>
+	        <span class=\"icon-bar\"></span>
+	      </button>
+	      <a class=\"navbar-brand\" href=\"a_main.php\">Insan Penjaga Al-Qur'an</a>
+	    </div>
+	    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
+	      <ul class=\"nav navbar-nav\">
+	        <li><a href=\"a_main.php\">Dashboard</a></li>
+	        <li class=\"dropdown\">
+	          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Soal <span class=\"caret\"></span></a>
+	          <ul class=\"dropdown-menu\">
+	            <li><a href=\"a_add.php\">Add</a></li>
+	            <li><a href=\"a_view.php\">View</a></li>
+	          </ul>
+	        </li>
+	        <li class=\"dropdown\">
+	          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Hasil <span class=\"caret\"></span></a>
+	          <ul class=\"dropdown-menu\">
+	            <li class=\"active\"><a href=\"a_result.php\">View <span class=\"sr-only\">(current)</span></a></li>
+	            <li><a href=\"a_clear.php\" id=\"confAnchor\" onclick=\"confirm();\">Clear</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	      <ul class=\"nav navbar-nav navbar-right\">
+	        <li><a href=\"logout.php\">Logout</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	<div class=\"container\">
+		<div class=\"table-responsive\">
+			<table class=\"table table-bordered\">
+				<tr>
+					<th>Rank</th>
+					<th>Nama</th>
+					<th>Nomor</th>
+					<th>Total Score</th>
+				</tr>
+				<?php
+
+				$rank = 1;
+
+				while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+					echo \"<tr>\";
+					echo \"<td>\" . $rank . \"</td>\";
+					echo \"<td>\" . $row[\"name\"] . \"</td>\";
+					echo \"<td>\" . $row[\"num\"] . \"</td>\";
+					echo \"<td>\" . $row[\"score\"] . \"</td>\";
+					echo \"</tr>\";
+
+					$rank = $rank + 1;
+				}
+				
+				?>
+			</table>
+		</div>
+	</div>
+    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>
+    <script src=\"js/bootstrap.min.js\"></script>
+    <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>
+    <script>
+		document.getElementById(\"confAnchor\").addEventListener(\"click\", function(event){
+		  event.preventDefault()
+		});
+		function confirm() {
+			swal({
+			  title: \"Are you sure?\",
+			  text: \"Once deleted, you will not be able to recover this data!\",
+			  icon: \"warning\",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			  	window.location.href = \"<?php Print($newUrl); ?>\";
+			  } else {
+			    swal(\"Your data is safe!\");
+			  }
+			});
+		}
+    </script>
+    <?php
+
+    if (isset($_GET[\"msg_title\"]) && isset($_GET[\"msg_text\"]) && isset($_GET[\"msg_icon\"])) {
+      echo \"<script>swal('\" . $_GET[\"msg_title\"] . \"', '\" . $_GET[\"msg_text\"] . \"', '\" . $_GET[\"msg_icon\"] . \"');</script>\";
+    }
+
+    ?>"
+      associated_elems
+      end
+    end
+
+    artifact 133506 "a_view"
+      stereotype "source"
+      php_src "<?php
+
+require 'auth.php';
+require 'config.php';
+
+try {
+
+	$stmt = $pdo->query(\"SELECT * FROM perguntas\");
+
+	if ($stmt === false) {
+
+		throw new PDOException('Error Processing Request.');
+
+	}
+	
+} catch (PDOException $e) {
+	
+	echo $e->getMessage();
+
+}
+
+if (isset($_SERVER[\"HTTPS\"]) && $_SERVER[\"HTTPS\"] === \"on\") {
+
+	$newUrl = \"https\";
+
+} else $newUrl = \"http\";
+
+$newUrl .= \"://\";
+$newUrl .= $_SERVER[\"HTTP_HOST\"];
+$newUrl .= \"/a_clear.php\";
+
+?>
+<!DOCTYPE html>
+<html lang=\"id\">
+  <head>
+    <meta charset=\"utf-8\">
+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+    <title>Admin - Insan Penjaga Al-Qur'an</title>
+    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">
+  </head>
+  <body>
+  	<nav class=\"navbar navbar-inverse\">
+	  <div class=\"container\">
+	    <div class=\"navbar-header\">
+	      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">
+	        <span class=\"sr-only\">Toggle navigation</span>
+	        <span class=\"icon-bar\"></span>
+	        <span class=\"icon-bar\"></span>
+	        <span class=\"icon-bar\"></span>
+	      </button>
+	      <a class=\"navbar-brand\" href=\"a_main.php\">Insan Penjaga Al-Qur'an</a>
+	    </div>
+	    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
+	      <ul class=\"nav navbar-nav\">
+	        <li><a href=\"a_main.php\">Dashboard</a></li>
+	        <li class=\"dropdown\">
+	          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">perguntas <span class=\"caret\"></span></a>
+	          <ul class=\"dropdown-menu\">
+	            <li><a href=\"a_add.php\">Add</a></li>
+	            <li class=\"active\"><a href=\"a_view.php\">View <span class=\"sr-only\">(current)</span></a></li>
+	          </ul>
+	        </li>
+	        <li class=\"dropdown\">
+	          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Hasil <span class=\"caret\"></span></a>
+	          <ul class=\"dropdown-menu\">
+	            <li><a href=\"a_result.php\">View</a></li>
+	            <li><a href=\"a_clear.php\" id=\"confAnchor\" onclick=\"confirm();\">Clear</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	      <ul class=\"nav navbar-nav navbar-right\">
+	        <li><a href=\"logout.php\">Logout</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	<div class=\"container\">
+			<div class=\"table-responsive\">
+				<table class=\"table table-bordered\">
+					<tr>
+						<th>Pertanyaan</th>
+						<th>Pilihan A</th>
+						<th>Pilihan B</th>
+						<th>Pilihan C</th>
+						<th>Pilihan D</th>
+						<th>Kunci Jawaban</th>
+						<th>Action</th>
+					</tr>
+					<?php
+
+					while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+						echo \"<tr>\";
+						echo \"<td>\" . $row[\"pergunta\"] . \"</td>\";
+						echo \"<td>\" . $row[\"pilihan_1\"] . \"</td>\";
+						echo \"<td>\" . $row[\"pilihan_2\"] . \"</td>\";
+						echo \"<td>\" . $row[\"pilihan_3\"] . \"</td>\";
+						echo \"<td>\" . $row[\"pilihan_4\"] . \"</td>\";
+						echo \"<td>\" . $row[\"kunci_jawaban\"] . \"</td>\";
+						echo \"<td><a href='a_edit.php?id=\" . $row[\"id\"] . \"'>Edit</a> | <a href='a_delete.php?id=\" . $row[\"id\"] . \"'>Delete</a></td>\";
+						echo \"</tr>\";
+					}
+					
+					?>
+				</table>
+			</div>
+		</div>
+    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>
+    <script src=\"js/bootstrap.min.js\"></script>
+    <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>
+    <script>
+		document.getElementById(\"confAnchor\").addEventListener(\"click\", function(event){
+		  event.preventDefault()
+		});
+		function confirm() {
+			swal({
+			  title: \"Are you sure?\",
+			  text: \"Once deleted, you will not be able to recover this data!\",
+			  icon: \"warning\",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			  	window.location.href = \"<?php Print($newUrl); ?>\";
+			  } else {
+			    swal(\"Your data is safe!\");
+			  }
+			});
+		}
+    </script>
+    <?php
+
+    if (isset($_GET[\"msg_title\"]) && isset($_GET[\"msg_text\"]) && isset($_GET[\"msg_icon\"])) {
+      echo \"<script>swal('\" . $_GET[\"msg_title\"] . \"', '\" . $_GET[\"msg_text\"] . \"', '\" . $_GET[\"msg_icon\"] . \"');</script>\";
+    }
+
+    ?>"
+      associated_elems
+      end
+    end
+
+    artifact 133634 "admin"
+      stereotype "source"
+      php_src "<?php
+
+require 'config.php';
+
+if (isset($_POST['submit'])) {
+
+  $uname = $_POST['uname'];
+  $pw    = $_POST['pw'];
+
+  try {
+    
+    if ($uname === 'admin' && $pw === 'admin') {
+
+      session_start();
+
+      $_SESSION['admin'] = 1;
+
+      header('Location: a_main.php');
+
+    } else {
+
+      throw new Exception();
+      
+    }
+
+  } catch (Exception $e) {
+    
+    $msg_title = urlencode(\"Error!\");
+    $msg_text  = urlencode(\"Username ou password errado!\");
+    $msg_icon  = \"error\";
+    $msg       = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+
+    header(\"Location: admin.php?\" . $msg);
+
+  }
+  
+}
+
+?>
+<!DOCTYPE html>
+<html lang=\"id\">
+  <head>
+    <meta charset=\"utf-8\">
+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+    <title>Login Admin - Insan Penjaga Al-Qur'an</title>
+    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">
+  </head>
+  <body>
+    <div class=\"container\" style=\"margin-top: 30px;\">
+      <div class=\"panel panel-primary\">
+        <div class=\"panel-heading\">
+          <h3 class=\"panel-title\">Login</h3>
+        </div>
+        <div class=\"panel-body\">
+          <form action=\"<?php echo $_SERVER['PHP_SELF']; ?>\" method=\"post\">
+            <div class=\"input-group\">
+              <span class=\"input-group-addon\" id=\"basic-addon1\">@</span>
+              <input type=\"text\" class=\"form-control\" name=\"uname\" placeholder=\"Username\" aria-describedby=\"basic-addon1\">
+            </div>
+            <br>
+            <div class=\"input-group\">
+              <span class=\"input-group-addon\" id=\"basic-addon1\"><span class=\"glyphicon glyphicon-lock\" aria-hidden=\"true\"></span></span>
+              <input type=\"password\" class=\"form-control\" name=\"pw\" placeholder=\"Password\" aria-describedby=\"basic-addon1\">
+            </div>
+            <br>
+            <button type=\"submit\" class=\"btn btn-default\" name=\"submit\">Submit</button>
+          </form>
+        </div>
+        <div class=\"panel-footer text-center\">Insan Penjaga Al-Qur'an &copy; 2019</div>
+      </div>
+    </div>
+    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>
+    <script src=\"js/bootstrap.min.js\"></script>
+    <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>
+    <?php
+
+    if (isset($_GET[\"msg_title\"]) && isset($_GET[\"msg_text\"]) && isset($_GET[\"msg_icon\"])) {
+      echo \"<script>swal('\" . $_GET[\"msg_title\"] . \"', '\" . $_GET[\"msg_text\"] . \"', '\" . $_GET[\"msg_icon\"] . \"');</script>\";
+    }
+
+    ?>"
+      associated_elems
+      end
+    end
+
+    artifact 133762 "auth"
+      stereotype "source"
+      php_src "<?php
+
+session_start();
+
+try {
+
+	if (!isset($_SESSION['admin'])) {
+
+		throw new Exception();
+
+	}
+	
+} catch (Exception $e) {
+	
+	$msg_title = urlencode(\"Peringatan!\");
+	$msg_text  = urlencode(\"Anda harus login terlebih dahulu!\");
+	$msg_icon  = \"warning\";
+	$msg       = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+	
+	header('Location: admin.php?' . $msg);
+
+}
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 133890 "config"
+      stereotype "source"
+      php_src "<?php
+
+$PG = array(
+	'HOST' => 'localhost',
+	'PORT' => 5432,
+	'DB' => 'quiz',
+	'USER' => 'postgres',
+	'PW' => '123',
+	);
+
+$dsn = \"pgsql:host={$PG['HOST']};port={$PG['PORT']};dbname={$PG['DB']};user={$PG['USER']};password={$PG['PW']}\";
+
+try {
+
+	$pdo = new PDO($dsn);
+
+} catch (PDOException $e) {
+
+	echo $e->getMessage();
+	
+}
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 134018 "index"
+      stereotype "source"
+      php_src "<?php
+
+require 'config.php';
+
+if (isset($_POST['submit'])) {
+
+  $ip   = $_SERVER['REMOTE_ADDR'];
+  $name = $_POST['name'];
+  $num  = $_POST['num'];
+
+  try {
+
+    $row = $pdo->query(\"SELECT COUNT(*) FROM ppl WHERE ip='$ip'\")->fetchColumn();
+
+    if ($row > 0) {
+
+      throw new PDOException('1');
+
+    }
+
+    $row = $pdo->query(\"SELECT COUNT(*) FROM ppl WHERE name='$name' OR num=$num\")->fetchColumn();
+
+    if ($row > 0) {
+
+      throw new PDOException('2');
+
+    }
+
+    $stmt = $pdo->query(\"INSERT INTO ppl (name, num, ip) VALUES ('$name', $num, '$ip')\");
+
+    if ($stmt === false) {
+
+      throw new PDOException('3');
+
+    }
+
+    session_start();
+
+    $_SESSION['info']['id']          = $pdo->lastInsertId();
+    $_SESSION['info']['name']        = $name;
+    $_SESSION['info']['num']         = $num;
+    $_SESSION['info']['score']       = 0;
+    $_SESSION['info']['has_session'] = true;
+    $_SESSION['soal']                = array();
+
+    $stmt = $pdo->query(\"SELECT * FROM soal\");
+
+    $i = 0;
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+      $_SESSION['soal'][$i]                     = $row;
+      $_SESSION['soal'][$i]['sudah_dikerjakan'] = 0;
+      $_SESSION['soal'][$i]['sudah_dilihat']    = 0;
+
+      ++$i;
+
+    }
+
+    $_SESSION['jumlah_soal']       = $i;
+    $_SESSION['jumlah_dikerjakan'] = 0;
+
+    header('Location: q.php?n=1');
+
+  } catch (PDOException $e) {
+    
+    if ($e->getMessage() === '1' || $e->getMessage() === '2') {
+
+      $msg_title = urlencode(\"Peringatan!\");
+      $msg_text  = urlencode(\"Anda sudah pernah melakukan kuis sebelumnya!\");
+      $msg_icon  = \"warning\";
+      $msg       = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+      
+      header('Location: index.php?' . $msg);
+
+    } else {
+
+      echo $e->getMessage();
+
+    }
+
+  }
+
+}
+
+?>
+<!DOCTYPE html>
+<html lang=\"id\">
+  <head>
+    <meta charset=\"utf-8\">
+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+    <title>Insan Penjaga Al-Qur'an</title>
+    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">
+  </head>
+  <body>
+    <div class=\"container\" style=\"margin-top: 30px;\">
+      <div class=\"panel panel-primary\">
+        <div class=\"panel-heading\">
+          <h3 class=\"panel-title\">Forms</h3>
+        </div>
+        <div class=\"panel-body\">
+          <form action=\"<?php echo $_SERVER['PHP_SELF']; ?>\" method=\"post\">
+            <div class=\"input-group\">
+              <span class=\"input-group-addon\" id=\"basic-addon1\">@</span>
+              <input type=\"text\" class=\"form-control\" name=\"name\" placeholder=\"Nama\" aria-describedby=\"basic-addon1\">
+            </div>
+            <br>
+            <div class=\"input-group\">
+              <span class=\"input-group-addon\" id=\"basic-addon1\">62</span>
+              <input type=\"number\" class=\"form-control\" name=\"num\" placeholder=\"Nomor HP\" aria-describedby=\"basic-addon1\">
+            </div>
+            <br>
+            <button type=\"submit\" class=\"btn btn-default\" name=\"submit\">Submit</button>
+          </form>
+        </div>
+        <div class=\"panel-footer text-center\">Insan Penjaga Al-Qur'an &copy; 2019</div>
+      </div>
+    </div>
+    <div class=\"container text-center\" style=\"margin-bottom: 30px;\">
+      <u><a href=\"admin.php\">Admin</a></u>?
+    </div>
+    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>
+    <script src=\"js/bootstrap.min.js\"></script>
+    <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>
+    <?php
+
+    if (isset($_GET[\"msg_title\"]) && isset($_GET[\"msg_text\"]) && isset($_GET[\"msg_icon\"])) {
+      echo \"<script>swal('\" . $_GET[\"msg_title\"] . \"', '\" . $_GET[\"msg_text\"] . \"', '\" . $_GET[\"msg_icon\"] . \"');</script>\";
+    }
+
+    ?>"
+      associated_elems
+      end
+    end
+
+    artifact 134146 "logout"
+      stereotype "source"
+      php_src "<?php
+
+session_start();
+session_unset();
+session_destroy();
+
+$msg_title = urlencode(\"Berhasil!\");
+$msg_text = urlencode(\"Logout berhasil!\");
+$msg_icon = \"success\";
+$msg = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+
+header(\"Location: index.php?\" . $msg);
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 134274 "q"
+      stereotype "source"
+      php_src "<?php
+
+session_start();
+
+require 'config.php';
+
+try {
+
+	if (!isset($_SESSION['info']['has_session'])) {
+
+		throw new Exception();
+	}
+	
+} catch (Exception $e) {
+
+	$msg_title = urlencode(\"Error!\");
+	$msg_text  = urlencode(\"Masukkan data terlebih dahulu!\");
+	$msg_icon  = \"error\";
+	$msg       = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+
+	header(\"Location: index.php?\" . $msg);
+	die();
+	
+}
+
+if (isset($_GET[\"n\"])) {
+
+	$n = $_GET[\"n\"];
+
+	if ($_SESSION[\"soal\"][$n-1][\"sudah_dilihat\"] && $_SESSION[\"soal\"][$n-1][\"sudah_dikerjakan\"]) {
+
+		if ($n == $_SESSION[\"jumlah_soal\"]) {
+
+			header(\"Location: q.php?n=1\");
+
+		} else {
+
+			$n = $n + 1;
+
+			header(\"Location: q.php?n=\" . $n);
+
+		}
+
+	} else if ($_SESSION[\"soal\"][$n-1][\"sudah_dilihat\"] && !$_SESSION[\"soal\"][$n-1][\"sudah_dikerjakan\"]) {
+
+		if (isset($_GET['ans'])) {
+
+			$_SESSION[\"soal\"][$n-1][\"jawaban_user\"] 	 = $_GET['ans'];
+			$_SESSION[\"soal\"][$n-1][\"sudah_dikerjakan\"]  = 1;
+			$_SESSION[\"jumlah_dikerjakan\"] 			    += 1;
+
+			if ($n == $_SESSION[\"jumlah_soal\"]) {
+
+				header(\"Location: q.php?n=1\");
+
+			} else {
+
+				$n = $n + 1;
+
+				header(\"Location: q.php?n=\" . $n);
+
+			}
+
+		} else {
+
+			$_SESSION[\"soal\"][$n-1][\"jawaban_user\"] 	 = 'x';
+			$_SESSION[\"soal\"][$n-1][\"sudah_dikerjakan\"]  = 1;
+			$_SESSION[\"jumlah_dikerjakan\"] 				+= 1;
+
+			if ($n == $_SESSION[\"jumlah_soal\"]) {
+
+				header(\"Location: q.php?n=1\");
+
+			} else {
+
+				$n = $n + 1;
+
+				header(\"Location: q.php?n=\" . $n);
+
+			}
+
+		}
+
+	}
+
+	else if (!$_SESSION[\"soal\"][$n-1][\"sudah_dilihat\"]) {
+
+		$_SESSION[\"soal\"][$n-1][\"sudah_dilihat\"] = 1;
+
+	}
+
+	if (isset($_SERVER[\"HTTPS\"]) && $_SERVER[\"HTTPS\"] === \"on\") {
+
+		$newUrl = \"https\";
+
+	} else $newUrl = \"http\";
+
+	$newUrl .= \"://\";
+	$newUrl .= $_SERVER[\"HTTP_HOST\"];
+	$newUrl .= $_SERVER[\"PHP_SELF\"];
+	$newUrl .= \"?n=\";
+	$newUrl .= $n;
+
+} else {
+
+	header(\"Location: q.php?n=1\");
+
+}
+
+if ($_SESSION[\"jumlah_dikerjakan\"] == $_SESSION[\"jumlah_soal\"]) {
+
+	header(\"Location: result.php\");
+
+}
+
+?>"
+      associated_elems
+      end
+    end
+
+    artifact 134402 "result"
+      stereotype "source"
+      php_src "<?php
+
+session_start();
+
+require 'config.php';
+
+try {
+
+	if (!isset($_SESSION['info']['has_session'])) {
+
+		throw new Exception();
+	}
+	
+} catch (Exception $e) {
+
+	$msg_title = urlencode(\"Error!\");
+	$msg_text  = urlencode(\"Masukkan data terlebih dahulu!\");
+	$msg_icon  = \"error\";
+	$msg       = \"msg_title=\" . $msg_title . \"&msg_text=\" . $msg_text . \"&msg_icon=\" . $msg_icon;
+
+	header(\"Location: index.php?\" . $msg);
+	die();
+	
+}
+
+if ($_SESSION[\"jumlah_dikerjakan\"] == $_SESSION[\"jumlah_soal\"]) {
+
+	$jumlah_benar = 0;
+	$benar        = array();
+
+	for ($counter = 0; $counter < $_SESSION[\"jumlah_soal\"]; ++$counter) {
+
+		if ($_SESSION[\"soal\"][$counter][\"jawaban_user\"] == $_SESSION[\"soal\"][$counter][\"kunci_jawaban\"]) {
+
+			$_SESSION[\"info\"][\"score\"] += 1;
+			$benar[$counter]				 = 1;
+			$jumlah_benar					+= 1;
+
+		} else $benar[$counter] = 0;
+	}
+
+	$id    = $_SESSION[\"info\"][\"id\"];
+	$score = $_SESSION[\"info\"][\"score\"];
+
+	try {
+
+		$stmt = $pdo->query(\"UPDATE ppl SET score=$score WHERE id=$id\");
+
+		if ($stmt === false) {
+
+			throw new PDOException('Error Processing Request');
+			
+		}
+		
+	} catch (PDOException $e) {
+
+		echo $e->getMessage();
+		
+	}
+
+} else {
+
+	header(\"Location: q.php?n=1\");
+	die();
+
+}
+
+?>"
+      associated_elems
+      end
+    end
+  end
+end

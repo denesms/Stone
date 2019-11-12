@@ -1,0 +1,51 @@
+format 222
+"test" // Stone::bootstrap4::jquery::test
+  revision 1
+  modified_by 2 "denes"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  php_dir "/home/denes/NetBeansProjects/Stone/bootstrap4/jquery/test/"
+  deploymentview 128130 "test"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128130 "xhtml"
+      stereotype "source"
+      php_src "<?php
+	# Load and run the test suite as a proper XHTML page
+	header(\"Content-type: application/xhtml+xml\");
+	readfile(\"index.html\");
+?>"
+      associated_elems
+      end
+    end
+  end
+
+  package_ref 128514 // data
+end

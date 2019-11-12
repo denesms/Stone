@@ -1,0 +1,62 @@
+format 222
+"old" // Stone::ckeditor::samples::old
+  revision 1
+  modified_by 2 "denes"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  php_dir "/home/denes/NetBeansProjects/Stone/ckeditor/samples/old/"
+  deploymentview 128386 "old"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128386 "sample_posteddata"
+      stereotype "source"
+      php_src "<?php /* <body><pre>
+
+-------------------------------------------------------------------------------------------
+  CKEditor - Posted Data
+
+  We are sorry, but your Web server does not support the PHP language used in this script.
+
+  Please note that CKEditor can be used with any other server-side language than just PHP.
+  To save the content created with CKEditor you need to read the POST data on the server
+  side and write it to a file or the database.
+
+  Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+  For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+-------------------------------------------------------------------------------------------
+
+</pre><div style=\"display:none\"></body> */ include \"assets/posteddata.php\"; ?>"
+      associated_elems
+      end
+    end
+  end
+
+  package_ref 129026 // assets
+end
